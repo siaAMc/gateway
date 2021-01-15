@@ -2,6 +2,7 @@
 
 namespace Larabookir\Gateway;
 
+use http\Client\Curl\User;
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -14,7 +15,15 @@ class Gateway extends Facade
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor()
+
+	 public $user;
+	 public function __construct()
+
+     {
+         $this->user=auth()->user;
+     }
+
+    protected static function getFacadeAccessor()
 	{
 		return 'gateway';
 	}
